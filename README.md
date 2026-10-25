@@ -1,43 +1,58 @@
-# Astro Starter Kit: Minimal
+# Masonic Enterprise — IT Infrastructure & Cloud Engineering Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
+Personal portfolio showcasing hands-on work with Microsoft Azure, Microsoft 365, Windows Server, Microsoft Entra ID, Intune, networking, and infrastructure security.
+
+**Live website:** [masonicenterprise.com](https://masonicenterprise.com)
+
+## Overview
+
+The website is built with [Astro](https://astro.build/) and hosted on **Azure Static Web Apps**. Changes to the production branch are built and deployed through GitHub Actions. Cloudflare manages DNS and the `www` redirect.
+
+| Component | Implementation |
+| --- | --- |
+| Web framework | Astro |
+| Hosting | Azure Static Web Apps — Free plan |
+| Source control and CI/CD | GitHub and GitHub Actions |
+| Domain and DNS | Cloudflare |
+| TLS | Azure-managed HTTPS certificate |
+| Production branch | `main` |
+| Build output | `dist/` |
+
+## Local Development
+
+Requires Node.js and npm.
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+To build and preview the production output:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Repository Structure
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Path | Purpose |
+| --- | --- |
+| `src/pages/index.astro` | Portfolio landing page |
+| `public/staticwebapp.config.json` | Static Web Apps security headers and configuration |
+| `.github/workflows/` | CI/CD deployment workflow |
+| `docs/` | Infrastructure and deployment documentation |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deployment and Security
 
-## 🧞 Commands
+The production site uses automated deployment from GitHub to Azure Static Web Apps. The deployment credential is stored in GitHub Actions Secrets, not in the repository.
 
-All commands are run from the root of the project, from a terminal:
+HTTP security headers are configured for the production website, including an enforced Content Security Policy, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Repository security measures include Dependabot vulnerability alerts and security updates, secret protection, and push protection. Additional CI/CD workflow hardening is in progress and is not documented as deployed.
 
-## 👀 Want to learn more?
+For architecture, configuration, and validation details, see [Azure Static Web Apps Deployment](docs/azure-static-web-apps-deployment.md).
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Related Project
+
+[Microsoft Enterprise Infrastructure Lab](https://github.com/MasonicEnterprise/Microsoft-Enterprise-Lab) — Windows Server, hybrid Active Directory, Microsoft Entra ID, Microsoft 365, Intune, and endpoint management. The repository may be private; access to its documentation depends on repository permissions.
