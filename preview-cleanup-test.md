@@ -1,2 +1,2 @@
 # Temporary Azure preview cleanup verification
-race test 1
+race test 1ss
