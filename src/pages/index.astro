@@ -1,47 +1,112 @@
 ---
 const projects = [
   {
-    title: "Microsoft enterprise lab",
+    title: "Azure Static Web Apps deployment",
+    status: "Live",
+    description:
+      "This site. Built with Astro and deployed to Azure Static Web Apps through GitHub Actions using GitHub OIDC, with Cloudflare DNS, an Azure-managed certificate, and an enforced Content Security Policy. Diagnosed a race condition that left pull request preview environments orphaned and fixed it with workflow concurrency, verified in Azure.",
+    tags: ["Azure Static Web Apps", "GitHub Actions", "OIDC", "Cloudflare DNS", "CSP"],
+    link: "https://github.com/MasonicEnterprise/portfolio-website",
+    linkText: "View repository",
+  },
+  {
+    title: "Hybrid identity and endpoint lab",
     status: "Active",
     description:
-      "A hybrid environment where on-premises Active Directory syncs to Microsoft Entra ID, with Intune enrollment and Conditional Access policies applied to test endpoints.",
-    tags: ["Windows Server", "Entra ID", "Intune", "Conditional Access"],
-    link: "https://github.com/MasonicEnterprise",
+      "A Hyper-V lab where an on-premises Active Directory domain syncs to Microsoft Entra ID with Entra Connect Sync. Hybrid-joined and Entra-joined Windows 11 devices are enrolled in Intune and verified compliant, with Windows LAPS password backup to Entra and Conditional Access policies under report-only testing.",
+    tags: ["Windows Server", "AD DS", "Entra Connect Sync", "Intune", "Windows LAPS"],
+    link: null,
+    linkText: null,
   },
   {
-    title: "Azure infrastructure lab",
-    status: "Planned",
+    title: "Troubleshooting case studies",
+    status: "Documented",
     description:
-      "Hub-and-spoke virtual networking in Azure, with role-based access control and basic cloud security baselines.",
-    tags: ["Azure", "Networking", "Security"],
+      "Resolved incidents written up with evidence, root cause, and validation: an Entra Connect Sync authentication failure (AADSTS700027) fixed by certificate rotation, a Windows LAPS backup failure traced to a disabled tenant setting, and the Static Web Apps preview cleanup race condition.",
+    tags: ["Entra Connect Sync", "Windows LAPS", "GitHub Actions"],
     link: null,
+    linkText: null,
+  },
+];
+
+const selectedWork = [
+  {
+    area: "Exchange hybrid",
+    text: "Provisioned remote mailboxes with PowerShell from on-premises Exchange, the source of authority, stamping the ExchangeGuid to link users to existing Exchange Online mailboxes and adding email aliases.",
   },
   {
-    title: "Linux and database lab",
-    status: "Planned",
-    description:
-      "A Linux server running PostgreSQL, used to practice network access rules, database security, and backup and restore.",
-    tags: ["Linux", "PostgreSQL", "Backups"],
-    link: null,
+    area: "Identity and MFA",
+    text: "Built a dynamic Microsoft Entra ID security group from license service plan assignments to scope an MFA Conditional Access policy, and traced a member-count discrepancy to a licensed service account.",
+  },
+  {
+    area: "Endpoint automation",
+    text: "Scripted remote removal of Cisco Webex Meetings across a Windows fleet through Datto RMM, handling machine-wide MSI and per-user installs, MSI exit codes (1603, 1605, 1618), and offline user registry hives.",
+  },
+  {
+    area: "Network infrastructure",
+    text: "Replaced IDF and MDF network equipment in school buildings, racking, cabling, and patching new switches.",
+  },
+  {
+    area: "Service desk",
+    text: "Handled support tickets in ServiceNow across Microsoft 365, Windows endpoints, and Active Directory, escalating tenant-level issues with a diagnosis attached.",
   },
 ];
 
 const skillGroups = [
   {
-    name: "Identity and cloud",
-    items: ["Microsoft 365", "Microsoft Entra ID", "Conditional Access"],
+    name: "Identity and access",
+    items: ["Microsoft Entra ID", "Entra Connect Sync (PHS)", "Conditional Access", "Dynamic groups", "Active Directory DS"],
   },
   {
-    name: "Endpoints and servers",
-    items: ["Microsoft Intune", "Active Directory", "Windows Server"],
+    name: "Microsoft 365",
+    items: ["Exchange hybrid", "Exchange Online", "Mailbox permissions", "SharePoint and OneDrive"],
   },
   {
-    name: "Networking, security, scripting",
-    items: ["Networking", "Endpoint security", "PowerShell"],
+    name: "Endpoint management",
+    items: ["Microsoft Intune", "Windows LAPS", "Windows Update for Business", "Microsoft Defender", "Hybrid and Entra join"],
+  },
+  {
+    name: "Windows infrastructure",
+    items: ["Windows Server", "Group Policy", "DNS and DHCP", "SMB and NTFS permissions", "Hyper-V"],
+  },
+  {
+    name: "Network infrastructure",
+    items: ["IDF and MDF equipment replacement", "Switch racking and cabling", "Cloudflare DNS"],
+  },
+  {
+    name: "Scripting and DevOps",
+    items: ["PowerShell", "Git and GitHub", "GitHub Actions (OIDC)", "Azure Static Web Apps"],
+  },
+  {
+    name: "Security practices",
+    items: ["Least-privilege CI/CD", "Secret scanning", "CodeQL", "Dependabot", "CSP and security headers", "Git history sanitization"],
+  },
+  {
+    name: "Support tools",
+    items: ["ServiceNow", "Datto RMM"],
   },
 ];
 
-const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+" , "Microsoft Certified: Azure Fundamentals (AZ-900)"];
+const learning = ["Azure administration (AZ-104)", "Microsoft Graph", "Azure CLI", "Python"];
+
+const certifications = [
+  { name: "CompTIA A+", inProgress: false },
+  { name: "CompTIA Network+", inProgress: false },
+  { name: "CompTIA Security+", inProgress: false },
+  { name: "Microsoft Certified: Azure Fundamentals (AZ-900)", inProgress: false },
+  { name: "Microsoft Certified: Azure Administrator Associate (AZ-104)", inProgress: true },
+];
+
+const roadmap = {
+  now: [
+    "Studying for AZ-104: Microsoft Azure Administrator",
+    "Keeping this site's CI/CD current: GitHub Actions runtime and runner updates",
+  ],
+  next: [
+    "Azure infrastructure lab: hub-and-spoke VNets, NSGs, and RBAC",
+    "Linux and PostgreSQL lab: access rules, database security, backup and restore",
+  ],
+};
 ---
 
 <!doctype html>
@@ -53,9 +118,9 @@ const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+" , 
     <meta name="theme-color" content="#0e1624" />
     <meta
       name="description"
-      content="Masonic Enterprise: a hands-on IT portfolio covering Microsoft 365, Entra ID, Intune, Active Directory, and Azure."
+      content="Masonic Enterprise: a hands-on IT portfolio covering hybrid identity, Microsoft Intune, Entra ID, Active Directory, and Azure Static Web Apps."
     />
-    <title>Masonic Enterprise | IT administration portfolio</title>
+    <title>Masonic Enterprise | IT infrastructure and cloud portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -72,6 +137,7 @@ const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+" , 
         <a class="brand" href="#home">Masonic Enterprise</a>
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
+          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
@@ -82,13 +148,12 @@ const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+" , 
     <main id="main">
       <section id="home" class="hero container">
         <div class="hero-copy">
-          <h1><h1>IT Infrastructure & Cloud Engineering</h1></h1>
+          <p class="eyebrow">IT support → systems administration and Azure</p>
+          <h1>Hybrid identity, Intune, and Azure, built and documented.</h1>
           <p class="lead">
-<p class="lead">
-  Hands-on projects focused on deploying, configuring,
-  securing, and managing Microsoft Azure, Microsoft 365,
-  and hybrid enterprise environments.
-</p>
+            A working lab running Active Directory, Entra Connect Sync, Intune,
+            and Conditional Access. This site is deployed to Azure Static Web
+            Apps through GitHub Actions with OIDC.
           </p>
           <div class="actions">
             <a class="button primary" href="#projects">See projects</a>
@@ -106,44 +171,71 @@ const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+" , 
 
         <figure class="topology">
           <pre aria-hidden="true">Active Directory (on-premises)
-        │  sync
-        ▼
+  │  Entra Connect Sync · PHS
+  ▼
 Microsoft Entra ID
-        ├── Conditional Access
-        └── Intune ──► Windows endpoints</pre>
-          <figcaption>
-            Lab identity flow: on-premises Active Directory syncs to Entra ID,
-            which applies Conditional Access and manages endpoints through
-            Intune.
+  ├─ Conditional Access (report-only)
+  ├─ Windows LAPS password backup
+  └─ Intune ──► Windows 11
+        ├─ Hybrid joined   <span class="ok">✓ compliant</span>
+        └─ Entra joined    <span class="ok">✓ compliant</span></pre>
+          <figcaption class="visually-hidden">
+            Lab identity flow: on-premises Active Directory syncs to Microsoft
+            Entra ID with Entra Connect Sync and password hash synchronization.
+            Entra ID applies Conditional Access policies in report-only mode,
+            stores Windows LAPS password backups, and manages Windows 11 devices
+            through Intune. Both a hybrid-joined and an Entra-joined device are
+            verified compliant.
           </figcaption>
         </figure>
       </section>
 
       <section id="about" class="section container">
         <h2>About</h2>
-        <div class="prose">
-<p>
-    I work in IT support and administration, with a focus
-    on developing my skills in cloud computing, enterprise
-    infrastructure, and security.
-  </p>
+        <div class="about-layout">
+          <div class="prose">
+            <p>
+              I work in IT support and Microsoft 365 administration, supporting
+              Windows endpoints and hybrid Active Directory environments with
+              Intune and Entra ID. I'm working toward systems administration,
+              then Azure cloud engineering and cloud security.
+            </p>
+            <p>
+              I run this lab like production: changes go through pull requests,
+              failures are diagnosed from logs, and every write-up separates what
+              was verified from what is still open. A recent example: tracing
+              orphaned Azure Static Web Apps preview environments to a race
+              condition and fixing it with workflow concurrency.
+            </p>
+          </div>
 
-  <p>
-    Masonic Enterprise is my personal lab and technical
-    portfolio, created to gain hands-on experience with
-    Microsoft Azure, Microsoft 365, Windows Server,
-    Active Directory, and related technologies.
-  </p>
+          <aside class="roadmap" aria-label="Current and planned work">
+            <h3>Now</h3>
+            <ul>
+              {roadmap.now.map((item) => <li>{item}</li>)}
+            </ul>
+            <h3>Next</h3>
+            <ul>
+              {roadmap.next.map((item) => <li>{item}</li>)}
+            </ul>
+          </aside>
+        </div>
+      </section>
 
-  <p>
-    The projects documented here cover infrastructure
-    deployment, identity and access management, endpoint
-    administration, networking, security configuration,
-    and troubleshooting. Each project emphasizes practical
-    implementation and documentation of real-world
-    administrative tasks.
-  </p>
-  </div>
+      <section id="experience" class="section container">
+        <h2>Selected work</h2>
+        <p class="section-intro">
+          Examples from IT support roles, described without client or employer
+          details.
+        </p>
+        <ul class="work-list">
+          {selectedWork.map((item) => (
+            <li>
+              <span class="work-area">{item.area}</span>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section id="projects" class="section container">
@@ -153,13 +245,11 @@ Microsoft Entra ID
             <li class="project">
               <div class="project-head">
                 <h3>{project.title}</h3>
-                <span class:list={["status", { planned: project.status === "Planned" }]}>
-                  {project.status}
-                </span>
+                <span class="status">{project.status}</span>
               </div>
               <div class="project-body">
                 <p>{project.description}</p>
-                <ul class="tags" aria-label="Technologies used">
+                <ul class="tags">
                   {project.tags.map((tag) => <li>{tag}</li>)}
                 </ul>
                 {project.link && (
@@ -169,7 +259,7 @@ Microsoft Entra ID
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View on GitHub
+                    {project.linkText}
                     <span class="visually-hidden">(opens in a new tab)</span>
                   </a>
                 )}
@@ -188,15 +278,32 @@ Microsoft Entra ID
               {skillGroups.map((group) => (
                 <div>
                   <dt>{group.name}</dt>
-                  <dd>{group.items.join(", ")}</dd>
+                  <dd>
+                    <ul class="tags">
+                      {group.items.map((item) => <li>{item}</li>)}
+                    </ul>
+                  </dd>
                 </div>
               ))}
+              <div>
+                <dt>Learning now</dt>
+                <dd>
+                  <ul class="tags learning">
+                    {learning.map((item) => <li>{item}</li>)}
+                  </ul>
+                </dd>
+              </div>
             </dl>
           </div>
           <div>
             <h3>Certifications</h3>
             <ul class="cert-list">
-              {certifications.map((cert) => <li>{cert}</li>)}
+              {certifications.map((cert) => (
+                <li>
+                  {cert.name}
+                  {cert.inProgress && <span class="status in-progress">In progress</span>}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -206,7 +313,7 @@ Microsoft Entra ID
         <h2>Contact</h2>
         <div class="prose">
           <p>
-            My repositories and technical write-ups are on GitHub. That is the
+            This site's source and deployment workflow are on GitHub. That is the
             best place to see how I work.
           </p>
           <!-- Add an email or LinkedIn link here when you are ready to publish one. -->
@@ -353,8 +460,15 @@ Microsoft Entra ID
     padding-block: 96px;
   }
 
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    margin: 0 0 16px;
+  }
+
   h1 {
-    font-size: clamp(34px, 5vw, 54px);
+    font-size: clamp(32px, 4.6vw, 50px);
     line-height: 1.15;
     letter-spacing: -0.02em;
     font-weight: 600;
@@ -421,12 +535,8 @@ Microsoft Entra ID
     overflow-x: auto;
   }
 
-  .topology figcaption {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-    font-size: 14px;
-    color: var(--muted);
+  .topology .ok {
+    color: var(--ok);
   }
 
   /* Sections */
@@ -458,6 +568,75 @@ Microsoft Entra ID
 
   .prose p {
     margin: 0 0 16px;
+  }
+
+  /* About */
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+
+  .roadmap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px;
+  }
+
+  .roadmap h3 {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .roadmap ul + h3 {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .roadmap li {
+    font-size: 15px;
+    color: var(--muted);
+    padding-block: 4px;
+  }
+
+  /* Selected work */
+  .section-intro {
+    margin: -12px 0 28px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .work-list li {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 32px;
+    padding-block: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .work-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .work-area {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+
+  .work-list p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 62ch;
   }
 
   /* Projects */
@@ -492,10 +671,6 @@ Microsoft Entra ID
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 2px 10px;
-  }
-
-  .status.planned {
-    color: var(--muted);
   }
 
   .project-body p {
@@ -557,14 +732,27 @@ Microsoft Entra ID
   }
 
   .skill-groups dd {
-    margin: 4px 0 0;
-    font-size: 17px;
+    margin: 8px 0 0;
+  }
+
+  .tags.learning li {
+    border-style: dashed;
+    color: var(--muted);
+    background: transparent;
   }
 
   .cert-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
     padding-block: 14px;
     border-top: 1px solid var(--line);
     font-size: 17px;
+  }
+
+  .status.in-progress {
+    color: var(--accent);
   }
 
   /* Footer */
@@ -583,9 +771,15 @@ Microsoft Entra ID
       padding-block: 64px;
     }
 
-    .project {
+    .about-layout {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 32px;
+    }
+
+    .project,
+    .work-list li {
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
     .project-head {
