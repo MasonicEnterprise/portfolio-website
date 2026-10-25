@@ -41,7 +41,6 @@ npm run preview
 | `src/pages/index.astro` | Portfolio landing page |
 | `public/staticwebapp.config.json` | Static Web Apps security headers and configuration |
 | `.github/workflows/` | CI/CD deployment workflow |
-| `docs/` | Infrastructure and deployment documentation |
 
 ## Deployment and Security
 
@@ -49,10 +48,10 @@ The production site uses automated deployment from GitHub to Azure Static Web Ap
 
 HTTP security headers are configured for the production website, including an enforced Content Security Policy, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy`.
 
-Repository security measures include Dependabot vulnerability alerts and security updates, secret protection, and push protection. Additional CI/CD workflow hardening is in progress and is not documented as deployed.
+Repository security measures include CodeQL, Dependabot security updates, secret protection, and push protection. GitHub Actions uses restricted permissions and GitHub OIDC for Azure deployment authentication. Automatic pull request preview-environment cleanup remains an unresolved issue.
 
-For architecture, configuration, and validation details, see [Azure Static Web Apps Deployment](docs/azure-static-web-apps-deployment.md).
+Detailed infrastructure and deployment documentation is maintained centrally in [Enterprise IT Lab — Azure Static Web Apps](https://github.com/MasonicEnterprise/Enterprise-IT-Lab/blob/main/docs/azure/static-web-apps.md). DNS and custom-domain configuration are documented in [Cloudflare DNS](https://github.com/MasonicEnterprise/Enterprise-IT-Lab/blob/main/docs/azure/cloudflare-dns.md).
 
 ## Related Project
 
-[Microsoft Enterprise Infrastructure Lab](https://github.com/MasonicEnterprise/Microsoft-Enterprise-Lab) — Windows Server, hybrid Active Directory, Microsoft Entra ID, Microsoft 365, Intune, and endpoint management. The repository may be private; access to its documentation depends on repository permissions.
+[Enterprise IT Lab](https://github.com/MasonicEnterprise/Enterprise-IT-Lab) — Centralized documentation for Azure hosting, DNS, Windows Server, hybrid Active Directory, Microsoft Entra ID, Microsoft 365, Intune, and endpoint management. Access depends on repository visibility.
