@@ -48,7 +48,7 @@ The production site uses automated deployment from GitHub to Azure Static Web Ap
 
 HTTP security headers are configured for the production website, including an enforced Content Security Policy, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy`.
 
-Repository security measures include CodeQL, Dependabot security updates, secret protection, and push protection. GitHub Actions uses restricted permissions and GitHub OIDC for Azure deployment authentication. Automatic pull request preview-environment cleanup remains an unresolved issue.
+Repository security measures include CodeQL, Dependabot security updates, secret protection, and push protection. GitHub Actions uses restricted permissions and GitHub OIDC for Azure deployment authentication. Pull request preview-environment cleanup has been investigated; its resolution is not yet independently verified.
 
 Detailed infrastructure and deployment documentation is maintained centrally in [Enterprise IT Lab — Azure Static Web Apps](https://github.com/MasonicEnterprise/Enterprise-IT-Lab/blob/main/docs/azure/static-web-apps.md). DNS and custom-domain configuration are documented in [Cloudflare DNS](https://github.com/MasonicEnterprise/Enterprise-IT-Lab/blob/main/docs/azure/cloudflare-dns.md).
 
