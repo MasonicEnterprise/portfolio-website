@@ -1,93 +1,81 @@
 ---
 const projects = [
   {
-    title: "Azure Static Web Apps deployment",
+    title: "Azure-hosted portfolio website",
     status: "Live",
     description:
-      "This site. Built with Astro and deployed to Azure Static Web Apps through GitHub Actions using GitHub OIDC, with Cloudflare DNS, an Azure-managed certificate, and an enforced Content Security Policy. Diagnosed a race condition that left pull request preview environments orphaned and fixed it with workflow concurrency, verified in Azure.",
-    tags: ["Azure Static Web Apps", "GitHub Actions", "OIDC", "Cloudflare DNS", "CSP"],
+      "Developed and deployed this portfolio using Astro, Azure Static Web Apps, and GitHub Actions with OIDC authentication. Configured Cloudflare DNS, HTTPS, Content Security Policy, and automated deployment workflows. Investigated issues involving pull request preview environments.",
+    tags: ["Azure Static Web Apps", "GitHub Actions", "OIDC", "Cloudflare DNS", "Astro"],
     link: "https://github.com/MasonicEnterprise/portfolio-website",
     linkText: "View repository",
   },
   {
-    title: "Hybrid identity and endpoint lab",
+    title: "Hybrid Microsoft 365 infrastructure lab",
     status: "Active",
     description:
-      "A Hyper-V lab where an on-premises Active Directory domain syncs to Microsoft Entra ID with Entra Connect Sync. Hybrid-joined and Entra-joined Windows 11 devices are enrolled in Intune and verified compliant, with Windows LAPS password backup to Entra and Conditional Access policies under report-only testing.",
-    tags: ["Windows Server", "AD DS", "Entra Connect Sync", "Intune", "Windows LAPS"],
-    link: null,
-    linkText: null,
+      "Designed and configured a hybrid lab integrating on-premises Active Directory with Microsoft Entra ID through Entra Connect Sync. Implemented Windows device enrollment and compliance policies in Intune, Windows LAPS, Group Policy, and Conditional Access policies in report-only mode.",
+    tags: ["Windows Server", "Active Directory", "Microsoft Entra ID", "Intune", "Hyper-V"],
+    link: "https://github.com/MasonicEnterprise/Enterprise-IT-Lab",
+    linkText: "View lab documentation",
   },
   {
-    title: "Troubleshooting case studies",
+    title: "Technical troubleshooting and case studies",
     status: "Documented",
     description:
-      "Resolved incidents written up with evidence, root cause, and validation: an Entra Connect Sync authentication failure (AADSTS700027) fixed by certificate rotation, a Windows LAPS backup failure traced to a disabled tenant setting, and the Static Web Apps preview cleanup race condition.",
-    tags: ["Entra Connect Sync", "Windows LAPS", "GitHub Actions"],
-    link: null,
-    linkText: null,
+      "Documented technical investigations involving Microsoft Entra Connect authentication, Windows LAPS configuration, and Azure deployment workflows. Case studies cover observed symptoms, troubleshooting methods, identified causes, and verification steps.",
+    tags: ["Troubleshooting", "Identity", "Endpoint management", "CI/CD"],
+    link: "https://github.com/MasonicEnterprise/Enterprise-IT-Lab",
+    linkText: "View documentation",
   },
 ];
 
 const selectedWork = [
   {
-    area: "Exchange hybrid",
-    text: "Provisioned remote mailboxes with PowerShell from on-premises Exchange, the source of authority, stamping the ExchangeGuid to link users to existing Exchange Online mailboxes and adding email aliases.",
+    area: "Identity and access management",
+    text: "Supported Microsoft Entra ID identity administration and Conditional Access initiatives, including license-based dynamic group membership, MFA enforcement, and authentication troubleshooting.",
   },
   {
-    area: "Identity and MFA",
-    text: "Built a dynamic Microsoft Entra ID security group from license service plan assignments to scope an MFA Conditional Access policy, and traced a member-count discrepancy to a licensed service account.",
-  },
-  {
-    area: "Endpoint automation",
-    text: "Scripted remote removal of Cisco Webex Meetings across a Windows fleet through Datto RMM, handling machine-wide MSI and per-user installs, MSI exit codes (1603, 1605, 1618), and offline user registry hives.",
+    area: "Microsoft 365 support",
+    text: "Troubleshot Microsoft 365 issues involving Exchange Online, SharePoint, OneDrive, user permissions, and account access.",
   },
   {
     area: "Network infrastructure",
-    text: "Replaced IDF and MDF network equipment in school buildings, racking, cabling, and patching new switches.",
+    text: "Installed and replaced network infrastructure across school environments, including switches, rack equipment, and structured cabling in MDF and IDF locations.",
   },
   {
-    area: "Service desk",
-    text: "Handled support tickets in ServiceNow across Microsoft 365, Windows endpoints, and Active Directory, escalating tenant-level issues with a diagnosis attached.",
+    area: "Enterprise service desk",
+    text: "Provided technical support for Windows endpoints, Active Directory, and Microsoft 365 services using ServiceNow. Diagnosed incidents, followed established troubleshooting procedures, and escalated issues requiring additional investigation or elevated access.",
   },
 ];
 
 const skillGroups = [
   {
     name: "Identity and access",
-    items: ["Microsoft Entra ID", "Entra Connect Sync (PHS)", "Conditional Access", "Dynamic groups", "Active Directory DS"],
+    items: ["Active Directory", "Microsoft Entra ID", "Entra Connect Sync", "Conditional Access", "MFA"],
   },
   {
     name: "Microsoft 365",
-    items: ["Exchange hybrid", "Exchange Online", "Mailbox permissions", "SharePoint and OneDrive"],
+    items: ["Exchange Online", "SharePoint", "OneDrive", "Microsoft 365 administration"],
   },
   {
     name: "Endpoint management",
-    items: ["Microsoft Intune", "Windows LAPS", "Windows Update for Business", "Microsoft Defender", "Hybrid and Entra join"],
+    items: ["Microsoft Intune", "Windows LAPS", "Windows compliance policies", "Defender for Endpoint"],
   },
   {
     name: "Windows infrastructure",
-    items: ["Windows Server", "Group Policy", "DNS and DHCP", "SMB and NTFS permissions", "Hyper-V"],
+    items: ["Windows Server", "Group Policy", "DNS", "DHCP", "Hyper-V", "File Services"],
   },
   {
-    name: "Network infrastructure",
-    items: ["IDF and MDF equipment replacement", "Switch racking and cabling", "Cloudflare DNS"],
+    name: "Networking",
+    items: ["Network switching", "MDF/IDF infrastructure", "Structured cabling", "DNS"],
   },
   {
-    name: "Scripting and DevOps",
-    items: ["PowerShell", "Git and GitHub", "GitHub Actions (OIDC)", "Azure Static Web Apps"],
-  },
-  {
-    name: "Security practices",
-    items: ["Least-privilege CI/CD", "Secret scanning", "CodeQL", "Dependabot", "CSP and security headers", "Git history sanitization"],
-  },
-  {
-    name: "Support tools",
-    items: ["ServiceNow", "Datto RMM"],
+    name: "Cloud and development tools",
+    items: ["Azure Static Web Apps", "Git", "GitHub Actions", "Cloudflare"],
   },
 ];
 
-const learning = ["Azure administration (AZ-104)", "Microsoft Graph", "Azure CLI", "Python"];
+const learning = ["Azure administration (AZ-104)", "PowerShell", "Microsoft Graph", "Azure CLI", "Python"];
 
 const certifications = [
   { name: "CompTIA A+", inProgress: false },
@@ -99,12 +87,14 @@ const certifications = [
 
 const roadmap = {
   now: [
-    "Studying for AZ-104: Microsoft Azure Administrator",
-    "Keeping this site's CI/CD current: GitHub Actions runtime and runner updates",
+    "Studying for the Microsoft AZ-104 certification",
+    "Developing PowerShell administration skills",
+    "Improving documentation and deployment workflows",
   ],
   next: [
-    "Azure infrastructure lab: hub-and-spoke VNets, NSGs, and RBAC",
-    "Linux and PostgreSQL lab: access rules, database security, backup and restore",
+    "Azure infrastructure lab: hub-and-spoke networking, NSGs, and RBAC",
+    "Azure monitoring, resource security, and cost management",
+    "Additional administration and security configurations for the hybrid lab",
   ],
 };
 ---
@@ -118,7 +108,7 @@ const roadmap = {
     <meta name="theme-color" content="#0e1624" />
     <meta
       name="description"
-      content="Masonic Enterprise: a hands-on IT portfolio covering hybrid identity, Microsoft Intune, Entra ID, Active Directory, and Azure Static Web Apps."
+      content="IT infrastructure and cloud portfolio featuring Microsoft 365, Active Directory, Microsoft Entra ID, Intune, and Azure projects."
     />
     <title>Masonic Enterprise | IT infrastructure and cloud portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -148,12 +138,13 @@ const roadmap = {
     <main id="main">
       <section id="home" class="hero container">
         <div class="hero-copy">
-          <p class="eyebrow">IT support → systems administration and Azure</p>
-          <h1>Hybrid identity, Intune, and Azure, built and documented.</h1>
+          <p class="eyebrow">IT SUPPORT · SYSTEMS ADMINISTRATION · CLOUD</p>
+          <h1>Building practical experience in IT infrastructure and cloud technologies.</h1>
           <p class="lead">
-            A working lab running Active Directory, Entra Connect Sync, Intune,
-            and Conditional Access. This site is deployed to Azure Static Web
-            Apps through GitHub Actions with OIDC.
+            I work with Microsoft 365, Windows, and identity technologies while
+            developing hands-on expertise in systems administration and Azure
+            through independent projects. My portfolio documents the environments
+            I've built, the technologies I've implemented, and the problems I've solved.
           </p>
           <div class="actions">
             <a class="button primary" href="#projects">See projects</a>
@@ -195,17 +186,19 @@ Microsoft Entra ID
         <div class="about-layout">
           <div class="prose">
             <p>
-              I work in IT support and Microsoft 365 administration, supporting
-              Windows endpoints and hybrid Active Directory environments with
-              Intune and Entra ID. I'm working toward systems administration,
-              then Azure cloud engineering and cloud security.
+              I'm an IT professional with experience supporting enterprise
+              Microsoft 365 environments, Windows endpoints, Active Directory,
+              and network infrastructure. My career focus is progressing from
+              technical support into systems administration, Azure infrastructure,
+              and cloud security.
             </p>
             <p>
-              I run this lab like production: changes go through pull requests,
-              failures are diagnosed from logs, and every write-up separates what
-              was verified from what is still open. A recent example: tracing
-              orphaned Azure Static Web Apps preview environments to a race
-              condition and fixing it with workflow concurrency.
+              Outside of work, I maintain a hybrid Microsoft 365 lab built on
+              Windows Server, Active Directory, Microsoft Entra ID, and Intune.
+              I use this environment to develop administration skills, test
+              configurations, and troubleshoot issues beyond the scope of my
+              day-to-day support responsibilities. I document implementation
+              steps, technical challenges, and validation results on GitHub.
             </p>
           </div>
 
@@ -223,10 +216,10 @@ Microsoft Entra ID
       </section>
 
       <section id="experience" class="section container">
-        <h2>Selected work</h2>
+        <h2>Professional experience</h2>
         <p class="section-intro">
-          Examples from IT support roles, described without client or employer
-          details.
+          Selected examples from IT support and network infrastructure roles,
+          presented without client or employer details.
         </p>
         <ul class="work-list">
           {selectedWork.map((item) => (
@@ -313,8 +306,9 @@ Microsoft Entra ID
         <h2>Contact</h2>
         <div class="prose">
           <p>
-            This site's source and deployment workflow are on GitHub. That is the
-            best place to see how I work.
+            Interested in my projects or professional background? Explore my GitHub
+            repositories for technical documentation, implementation details,
+            and ongoing development work.
           </p>
           <!-- Add an email or LinkedIn link here when you are ready to publish one. -->
         </div>
